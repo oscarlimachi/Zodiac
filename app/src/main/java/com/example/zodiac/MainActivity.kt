@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.zodiac.data.Horoscope
 import com.example.zodiac.data.HoroscopeAdapter
 
 
 class MainActivity : AppCompatActivity() {
 
-    val horoscopeList = listOf(
+    val horoscopeList: List<Horoscope> = listOf(
         Horoscope("aries", R.string.horoscope_name_aries, R.string.horoscope_date_aries, R.drawable.aries_icon),
         Horoscope("taurus", R.string.horoscope_name_taurus, R.string.horoscope_date_taurus, R.drawable.taurus_icon),
         Horoscope("gemini", R.string.horoscope_name_gemini, R.string.horoscope_date_gemini, R.drawable.gemini_icon),
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         Horoscope("aquarius", R.string.horoscope_name_aquarius, R.string.horoscope_date_aquarius, R.drawable.aquarius_icon),
         Horoscope("pisces", R.string.horoscope_name_pisces, R.string.horoscope_date_pisces, R.drawable.pisces_icon)
     )
-    lateinit var recyclerView
+    lateinit var recyclerView: RecyclerView
 
 
 

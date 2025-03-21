@@ -21,18 +21,18 @@
             android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aries">
+            android:text="Aries"
+            android:textSize="24sp"
+            android:textStyle="bold">
 
         </TextView>
         <TextView
-            android:id="@+id/textTextView"
+            android:id="@+id/datesTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha del Horoscopop"
-            android:textSize="16dp">
-
+            android:text="Fecha del Horoscopo"
+            android:textSize="16sp">
         </TextView>
     </LinearLayout>
-
 
 </LinearLayout>
