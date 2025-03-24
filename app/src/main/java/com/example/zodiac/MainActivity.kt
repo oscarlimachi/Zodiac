@@ -8,8 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zodiac.data.Horoscope
-import com.example.zodiac.data.HoroscopeAdapter
-
 
 class MainActivity : AppCompatActivity() {
 
