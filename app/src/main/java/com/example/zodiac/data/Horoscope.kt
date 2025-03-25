@@ -7,5 +7,4 @@ class Horoscope (
     val icon: Int
 ) {
 
-
 }

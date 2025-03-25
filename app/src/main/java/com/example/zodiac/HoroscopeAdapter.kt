@@ -9,32 +9,33 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiac.data.Horoscope
 
-class HoroscopeAdapter(val items:List<Horoscope>) : Adapter<HoroscopeViewHolder>(){
-    //lo que muestro
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
+class HoroscopeAdapter(val items: List<Horoscope>) : Adapter<HoroscopeViewHolder>() {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope,parent, false)
+    // Cual es la vista de las celdas
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
         return HoroscopeViewHolder(view)
-        }
-    //Cuantos elementos listo
+    }
+
+    // Cuantos elementos tengo que listar
     override fun getItemCount(): Int {
         return items.size
     }
-    //Voy a mostrar la celda en la posicion indicada
+
+    // Voy a mostrar la celda en la posicion indicada
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
-        TODO("Not yet implemented")
-        val horoscope=items[position]
+        val horoscope = items[position]
         holder.render(horoscope)
     }
-
 }
-class HoroscopeViewHolder(view:View): ViewHolder(view){
-    val nameTextView: TextView=view.findViewById(R.id.nameTextView)
-    val datesTextView: TextView=view.findViewById(R.id.datesTextView)
-    val iconImageView: ImageView=view.findViewById(R.id.iconImageView)
 
+class HoroscopeViewHolder(view: View) : ViewHolder(view) {
 
-    fun render(horoscope: Horoscope){
+    val nameTextView: TextView = view.findViewById(R.id.nameTextView)
+    val datesTextView: TextView = view.findViewById(R.id.datesTextView)
+    val iconImageView: ImageView = view.findViewById(R.id.iconImageView)
+
+    fun render(horoscope: Horoscope) {
         nameTextView.setText(horoscope.name)
         datesTextView.setText(horoscope.dates)
         iconImageView.setImageResource(horoscope.icon)
