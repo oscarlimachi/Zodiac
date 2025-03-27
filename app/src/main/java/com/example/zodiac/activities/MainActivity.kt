@@ -2,7 +2,7 @@ package com.example.zodiac.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zodiac.HoroscopeAdapter
 import com.example.zodiac.R
-import com.example.zodiac.data.Horoscope
 import com.example.zodiac.data.HoroscopeProvider
 
 class MainActivity : AppCompatActivity() {
@@ -49,4 +48,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter= adapter
         recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
     }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.activity_main_menu,menu)
+        return true
+    }
+
 }
