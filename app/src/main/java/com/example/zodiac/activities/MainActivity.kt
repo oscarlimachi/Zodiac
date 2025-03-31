@@ -2,9 +2,12 @@ package com.example.zodiac.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     var horoscopeList = HoroscopeProvider.getAll()
 
     lateinit var recyclerView: RecyclerView
-
+    lateinit var adapter: HoroscopeAdapter
 
 
 
@@ -36,10 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         
         recyclerView=findViewById(R.id.recyclerView)
-        val adapter= HoroscopeAdapter(horoscopeList,{ position ->
+        adapter= HoroscopeAdapter(horoscopeList,{ position ->
             val horoscope = horoscopeList[position]
-
-          //  Log.i("CLICK","He hecho click en un horoscopo ${horoscope.id}")
 
             val intent = Intent(this,DetailActivity2::class.java)
             intent.putExtra("HOROSCOPE_ID", horoscope.id)
@@ -51,9 +52,26 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_main_menu,menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_main_menu, menu)
+
+        val menuItem = menu.findItem(R.id.menu_search)
+        val searchView = menuItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object:OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                horoscopeList = HoroscopeProvider.getAll().filter { horoscope ->
+                    getString(horoscope.name).contains(newText, true)
+                }
+                adapter.updateItems(horoscopeList)
+                return true
+            }
+        })
+
         return true
     }
-
 }

@@ -36,7 +36,6 @@ class DetailActivity2 : AppCompatActivity() {
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
         val horoscope = HoroscopeProvider.getById(id)!!
 
-        Toast.makeText(this,getString(horoscope.name),Toast.LENGTH_SHORT).show()
 
         nameTextView.setText(horoscope.name)
         dateTextView.setText(horoscope.dates)
@@ -46,11 +45,11 @@ class DetailActivity2 : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_detail_menu,menu)
+        menuInflater.inflate(R.menu.activity_detail_menu, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+   override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.menu_favorite ->{
                 Toast.makeText(this,"Favorito", Toast.LENGTH_SHORT).show()
