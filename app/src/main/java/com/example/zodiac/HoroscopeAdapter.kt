@@ -21,7 +21,7 @@ class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick:(Int) ->Unit)
     // Cuantos elementos tengo que listar
     override fun getItemCount(): Int {
         return items.size
-    }
+    }a
 
     // Voy a mostrar la celda en la posicion indicada
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
