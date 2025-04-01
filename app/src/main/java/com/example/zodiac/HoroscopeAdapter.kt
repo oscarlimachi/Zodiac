@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiac.data.Horoscope
+import com.example.zodiac.utils.SessionManager
 
 class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick:(Int) ->Unit) : Adapter<HoroscopeViewHolder>() {
 
@@ -21,7 +22,7 @@ class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick:(Int) ->Unit)
     // Cuantos elementos tengo que listar
     override fun getItemCount(): Int {
         return items.size
-    }a
+    }
 
     // Voy a mostrar la celda en la posicion indicada
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
@@ -46,10 +47,14 @@ class HoroscopeViewHolder(view: View) : ViewHolder(view) {
     val nameTextView: TextView = view.findViewById(R.id.nameTextView)
     val datesTextView: TextView = view.findViewById(R.id.datesTextView)
     val iconImageView: ImageView = view.findViewById(R.id.iconImageView)
-
+    val favoriteImage : ImageView = view.findViewById(R.id.menu_favorite)
     fun render(horoscope: Horoscope) {
         nameTextView.setText(horoscope.name)
         datesTextView.setText(horoscope.dates)
         iconImageView.setImageResource(horoscope.icon)
+        val session = SessionManager(itemView.context)
+        if (session.getFavoriteHoroscope()==horoscope.id){
+            favori
+        }
     }
 }
