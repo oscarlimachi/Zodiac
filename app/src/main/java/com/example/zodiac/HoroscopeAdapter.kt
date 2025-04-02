@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -38,8 +37,6 @@ class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick:(Int) ->Unit)
         notifyDataSetChanged()
     }
 
-
-
 }
 
 class HoroscopeViewHolder(view: View) : ViewHolder(view) {
@@ -47,14 +44,17 @@ class HoroscopeViewHolder(view: View) : ViewHolder(view) {
     val nameTextView: TextView = view.findViewById(R.id.nameTextView)
     val datesTextView: TextView = view.findViewById(R.id.datesTextView)
     val iconImageView: ImageView = view.findViewById(R.id.iconImageView)
-    val favoriteImage : ImageView = view.findViewById(R.id.menu_favorite)
+    val favoriteImageView : ImageView = view.findViewById(R.id.favoriteImageView)
     fun render(horoscope: Horoscope) {
         nameTextView.setText(horoscope.name)
         datesTextView.setText(horoscope.dates)
         iconImageView.setImageResource(horoscope.icon)
+
         val session = SessionManager(itemView.context)
         if (session.getFavoriteHoroscope()==horoscope.id){
-            favori
+            favoriteImageView.visibility=View.VISIBLE
+        }else{
+            favoriteImageView.visibility=View.GONE
         }
     }
 }

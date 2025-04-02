@@ -12,6 +12,6 @@ class SessionManager(context: Context) {
 
     }
     fun getFavoriteHoroscope(): String {
-        return sharedPref.getString("FAVORITE_HOROSOCOPE","")!!
+        return sharedPref.getString("FAVORITE_HOROSCOPE","")!!
     }
 }

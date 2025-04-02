@@ -34,23 +34,19 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-
-        
-        recyclerView=findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
+    }
+    override fun onResume() {
+        super.onResume()
         adapter= HoroscopeAdapter(horoscopeList,{ position ->
-            val horoscope = horoscopeList[position]
-
-            val intent = Intent(this,DetailActivity2::class.java)
+            val horoscope=horoscopeList[position]
+            val intent=Intent(this,DetailActivity2::class.java)
             intent.putExtra("HOROSCOPE_ID", horoscope.id)
             startActivity(intent)
         })
-        recyclerView.adapter= adapter
-        recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
+        recyclerView.adapter=adapter
+        recyclerView.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main_menu, menu)

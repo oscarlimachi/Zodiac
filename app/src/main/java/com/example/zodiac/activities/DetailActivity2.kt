@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -45,6 +44,7 @@ class DetailActivity2 : AppCompatActivity() {
         iconImageView = findViewById(R.id.iconImageView)
 
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
+
         horoscope = HoroscopeProvider.getById(id)!!
 
         isFavorite = session.getFavoriteHoroscope() == horoscope.id
@@ -61,6 +61,7 @@ class DetailActivity2 : AppCompatActivity() {
         menuInflater.inflate(R.menu.activity_detail_menu, menu)
 
         favoriteMenuItem=menu.findItem(R.id.menu_favorite)
+        setFavoriteIcon()
         return true
     }
 
@@ -88,17 +89,18 @@ class DetailActivity2 : AppCompatActivity() {
                 startActivity(shareIntent)
                 return true
             }
-
             else -> {
                 return super.onOptionsItemSelected(item)
             }
-
         }
     }
 
         fun setFavoriteIcon(){
-            if (isFavorite) {favoriteMenuItem.setIcon(R.drawable.ic_favorite_selected)}
-            else {favoriteMenuItem.setIcon(R.drawable.ic_favorite)}
+            if (isFavorite) {
+                favoriteMenuItem.setIcon(R.drawable.ic_favorite_selected)
+            } else {
+                favoriteMenuItem.setIcon(R.drawable.ic_favorite)
+            }
         }
     }
 
