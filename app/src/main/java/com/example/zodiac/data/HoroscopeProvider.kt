@@ -2,7 +2,7 @@ package com.example.zodiac.data
 
 import com.example.zodiac.R
 
-class HoroscopeProvider(val title:String,val otraCosa:Int) {
+class HoroscopeProvider {
     companion object{
         private val horoscopeList: List<Horoscope> = listOf(
             Horoscope("aries",
